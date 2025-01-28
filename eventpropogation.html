@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" id="login"></form>
+    <div id="grand">grand
+        <div id="parent">parent
+            <div id="child">child</div>
+        </div>
+    </div>
+    <script>
+    let grand_parent =document.getElementById("grand")
+    grand_parent.addEventListener("click",function(e){
+        e.stopPropagation()
+        console.log("it is form grand ");
+        
+    })
+
+    let parent =document.getElementById("parent")
+    parent.addEventListener("click",function(e){
+        e.stopPropagation()
+        console.log("it is form parent ");
+        
+    })
+    let child =document.getElementById("child")
+    child.addEventListener("click",function(e){
+        e.stopPropagation()
+        console.log("it is form child ");
+        
+    })
+
+
+
+      let user_name = document.createElement("input");
+      user_name.setAttribute("type", "text");
+      user_name.setAttribute("id", "text");
+      user_name.setAttribute("name", "text");
+      user_name.setAttribute("placeholder", "username");
+      login.appendChild(user_name);
+
+      let username = document.getElementsByName("text")[0];
+      console.log(username);
+
+      let pass_word = document.createElement("input");
+      pass_word.setAttribute("type", "password");
+      pass_word.setAttribute("id", "password");
+      pass_word.setAttribute("name", "password");
+      pass_word.setAttribute("placeholder", "password");
+      login.appendChild(pass_word);
+
+      let password = document.getElementsByName("password")[0];
+      console.log(password);
+
+      let btn = document.createElement("button");
+      login.appendChild(btn);
+      btn.innerText = "submit";
+
+      let button = document.getElementsByTagName("button")[0];
+      console.log(button);
+      let obj = {};
+      button.addEventListener("click",(e) => {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        obj.username = username.value;
+        obj.password = password.value;
+        username.value = "";
+        password.value = "";
+        console.log(obj);
+        for (i in obj) {
+          let para = document.createElement("p");
+          login.appendChild(para);
+          para.innerText = `your ${i} is:${obj[i]}`;
+        }
+      });
+
+    button.addEventListener("click",(e)=>{
+        console.log("second btn")
+    })
+    </script>
+  </body>
+</html>
